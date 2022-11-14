@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+    <name>Graphics Settings CHS</name>
+    <author>tinygrox</author>
+    <supportedVersions>
+        <li>1.4</li>
+    </supportedVersions>
+    <packageId>tinygrox.CHS.graphicssettings</packageId>
+    <description>Graphics Settings+ 的简中翻译。建议配合rimpy使用更佳（optimize tex）。
+        \n以下是 Mod 中的涉及的部分名词的大致解释：
+        \n- Mip-Mapping\n意为多级渐远纹理技术，将源贴图纹理提前用一种滤波处理，会生成一堆的以 2 的倍数缩小的贴图，经典的用空间换时间。用通用的例子说明，即为类似于一个金字塔的层级贴图集合，上层的贴图都是相对于下层贴图的降采样（每上一层降二分之一），比如现有一个像素为16x16大小的贴图，经过处理就会生成像素8x8、4x4、2x2、1x1四个Mipmap级别。这样的好处就是当游戏内镜头拉近拉远时，在特定的渲染场景范围内，就能直接使用适合该场景的缩小好的贴图，比如拉远镜头看物品就只有一个点，此时这个点就只用到 1x1 的贴图，而不是原来的16x16，放大也同理。这从视觉上会免去锯齿或者摩尔纹，清晰度能提升，顺带降低了游戏的图像的采样频率，提高性能。
+        \n- MipMap Bias
+        \n  MipMap偏移系数，负值表示较大的Mipmap级别（如上述中的8x8），正值则表示较小的Mipmap级别（如上述中的1x1）。值越大，用的贴图像素就越小，在视觉上体现出来的效果就越模糊。如果你用过unity，就会发现里面的默认值为通常为-0.5。
+        \n- Anisotropic Filter Level
+        \n  各向异性过滤级别，各向异性过滤是一种贴图过滤技术，从3D图像来说明，其中的“向”就是从不同的“方向”来看贴图时，贴图如何被渲染过滤显示。在3D图像中，这意味着如果不是正对着贴图看，就会导致贴图在 x 方向或 y 方向上的长度被略缩，比如你在对着某堵墙面，斜着看，此时y方向上的长度不变，但x方向的长度则会根据镜头和贴图法线的夹角计算出一个长度，然后根据长度对贴图进行渲染过滤，一面墙正对着看像素为16x16，当斜着看时就有可能为8x16，变窄了，而级别的x2、x4等代表着采样范围，x2代表每2x2个像素就开始进行过滤。在游戏中，开启后可以对贴图进行柔化处理，减少锯齿和模糊感。
+        \n- Atlas Texture
+        \n  在本翻译 mod 中翻译为图集纹理，Texture atlas可以看做是一张大大的贴图图片，包含了各种贴图，例如，卫生mod（Dubs Bad Hygiene）中管道的贴图显示，在该mod中，管道有各种形状的贴图，有管道放单个格子的形状，2个管道在不同方向上连接的形状，都保存在一张图片中，那这个图片就是一个Atlas Texture，详情可以看卫生mod中的文件，路径为836308268\Textures\DBH\Things\Building\ducting_atlas.png，别称也为 spritesheet 或 image sprite，常用于在 2D 游戏开发中。
+    </description>
+    <loadAfter>
+        <li>telefonmast.graphicssettings</li>
+    </loadAfter>
+</ModMetaData>
